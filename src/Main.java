@@ -1,219 +1,858 @@
 import java.util.Random;
-import java.util.Arrays;
 import java.util.Scanner;
-import java.util.concurrent.locks.Condition;
+import java.util.Arrays;
 
 public class Main {
+
+    //Задание1.2.Методы.
+    public static int sumLastNums(int x) { //возвращает сумму 2х последних цифр числа
+        int lastD = x % 10;
+        x /= 10;
+        int secLastD = x % 10;
+        int summ = lastD + secLastD;
+        return summ;
+    }
+
+    //Задание1.4.Методы.
+    public static boolean isPositive(int x) {
+        return x > 0;
+    }
+
+    //Задание1.6.Методы.
+    public static boolean isUpperCase(char x){
+       return x >= 'A' && x <='Z';
+    }
+
+    //Задание1.8.Методы.
+    public static boolean isDivisor(int a, int b){
+        return (a % b == 0) || (b % a == 0);
+    }
+
+    //Задание1.10.Методы.
+    public static int lastNumSum(int a, int b){
+        return (Math.abs(a) % 10) + (Math.abs(b) % 10);
+    }
+
+    //Задание2.2.Условия.
+    public static double safeDiv(int x, int y) {
+        if (y == 0) {
+            return 0;
+        }
+        return (double) x / y;
+    }
+
+    //Задание2.4.Условия.
+    public static String makeDecision(int x, int y) {
+        if (x < y) {
+            return "<";
+        } else if (x > y) {
+            return ">";
+        } else {
+            return "=";
+        }
+    }
+
+    //Задание2.6.Условия.
+    public static boolean sum3(int x, int y, int z) {
+        if ((x + y == z) || (x + z == y) || (y + z == x)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //Задание2.8.Условия.
+    public static String age(int x) {
+        if (x % 10 == 1 && x % 100 != 11) {
+            return x + " год";
+        } else if ((x % 10 == 2 || x % 10 == 3 || x % 10 == 4) && (x % 100 < 12 || x % 100 > 14)) {
+            return x + " года";
+        } else {
+            return x + " лет";
+        }
+    }
+
+    //Задание2.10.Условия.
+    public static void printDays(String x) {
+        switch (x.toLowerCase()) {
+            case "понедельник":
+                System.out.println("понедельник");
+                System.out.println("вторник");
+                System.out.println("среда");
+                System.out.println("четверг");
+                System.out.println("пятница");
+                System.out.println("суббота");
+                System.out.println("воскресенье");
+                break;
+            case "вторник":
+                System.out.println("вторник");
+                System.out.println("среда");
+                System.out.println("четверг");
+                System.out.println("пятница");
+                System.out.println("суббота");
+                System.out.println("воскресенье");
+                break;
+            case "среда":
+                System.out.println("среда");
+                System.out.println("четверг");
+                System.out.println("пятница");
+                System.out.println("суббота");
+                System.out.println("воскресенье");
+                break;
+            case "четверг":
+                System.out.println("четверг");
+                System.out.println("пятница");
+                System.out.println("суббота");
+                System.out.println("воскресенье");
+                break;
+            case "пятница":
+                System.out.println("пятница");
+                System.out.println("суббота");
+                System.out.println("воскресенье");
+                break;
+            case "суббота":
+                System.out.println("суббота");
+                System.out.println("воскресенье");
+                break;
+            case "воскресенье":
+                System.out.println("воскресенье");
+                break;
+            default:
+                System.out.println("Это не день недели");
+        }
+    }
+
+    //Задание3.2.Циклы.
+    public static String reverseListNums(int x){
+        String result = "";
+        if (x > 0){
+            for (int i = x; i >= 0; i--){
+                result += i;
+                if (i > 0){
+                    result += " ";
+                }
+            }
+        }
+        else if (x < 0){
+            for (int i = x; i <= 0; i++){
+                result += i;
+                if (i < 0){
+                    result += " ";
+                }
+            }
+        }
+        return result;
+    }
+
+    //Задание3.4.Циклы.
+    public static int pow(int x, int y){
+        int result = 1;
+        for ( int i = 0; i < y; i++ ){
+            result *= x;
+        }
+        return result;
+    }
+
+    //Задание3.6.Циклы.
+    public static boolean equalNum(int x) {
+        x = Math.abs(x);
+        int oneDigit = x % 10;
+        while (x > 0) {
+            if (x % 10 != oneDigit)
+                return false;
+            x /= 10;
+        }
+        return true;
+    }
+
+    //Задание3.8.Циклы.
+    public  static void leftTriangle(int x){
+        for (int i = 1; i <= x; i++){
+            for (int j = 1; j <= i; j++){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+
+    //Задание3.10.Циклы.
+    public static void guessGame() {
+        Random random = new Random();
+        Scanner scanner = new Scanner(System.in);
+        int numberToGuess = random.nextInt(10); // Генерация
+        int userGuess = -1; // Предположения пользователя
+        int attempts = 0; // попытки
+
+        System.out.println("Введите число от 0 до 9:");
+
+        while (userGuess != numberToGuess) {
+            if (scanner.hasNextInt()) {
+                userGuess = scanner.nextInt();
+                attempts++;
+
+                if (userGuess < 0 || userGuess > 9) {
+                    System.out.println("Введите число в диапазоне от 0 до 9.");
+                    attempts--;
+                    continue;
+                }
+
+                if (userGuess == numberToGuess) {
+                    System.out.println("Вы угадали!");
+                } else {
+                    System.out.println("Вы не угадали, введите число от 0 до 9:");
+                }
+            } else {
+                System.out.println("Ошибка ввода! Введите целое число.");
+                scanner.next(); // Очищаем некорректный ввод
+            }
+        }
+        System.out.println("Вы отгадали число за " + attempts + " попытки.");
+    }
+
+    //Задание4.2.Массивы.
+    public static int findLast (int[] arr, int x){
+        for(int i = arr.length -1; i>=0; i--){
+            if (arr[i]==x)
+                return i;
+        }
+        return -1;
+    }
+
+    //Задание4.4.Массивы.
+    public static int[]add (int[] arr, int x, int pos){
+        if (pos < 0 || pos > arr.length)
+            System.out.println("Недопустимая позиция:" + pos);
+        int[] newArr = new int[arr.length+1];
+        for (int i = 0; i < pos; i++){
+            newArr[i] = arr[i];
+        }
+        newArr[pos]=x;
+        for (int i = pos; i< arr.length; i++){
+            newArr[i+1]= arr[i];
+        }
+        return newArr;
+    }
+
+    //Задание4.6.Массивы.
+    public static void reverse(int[] arr){
+        int left = 0; // Указатель на начало массива
+        int right = arr.length - 1; // Указатель на конец массива
+
+        while (left < right) {
+            int temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+            // Сдвигаем указатели
+            left++;
+            right--;
+        }
+    }
+
+    //Задание4.8.Массивы.
+    public static int[] concat(int[]arr1, int[] arr2){
+        int[] newArr = new int[arr1.length + arr2.length];
+
+        // Копируем элементы 1 массива
+        for (int i = 0; i < arr1.length; i++) {
+            newArr[i] = arr1[i];
+        }
+        // Копируем элементы 2 массива
+        for (int i = 0; i < arr2.length; i++) {
+            newArr[arr1.length + i] = arr2[i];
+        }
+        return newArr;
+    }
+
+    //Задание4.10.Массивы.
+    public static int[] deleteNegative (int[] arr){
+        int count = 0;
+        for (int num : arr) {
+            if (num >= 0) {
+                count++;
+            }
+        }
+
+        // Создаем новый массив для положительных элементов
+        int[] newArr = new int[count];
+        int index = 0;
+
+        // Заполняем новый массив только с полож. элементами
+        for (int num : arr) {
+            if (num >= 0) {
+                newArr[index] = num;
+                index++;
+            }
+        }
+        return newArr;
+    }
     public static void main(String[] args) {
+
         //Задание 1. Методы.
         System.out.println("Задание 1. Методы.");
-        Methods methods = new Methods();
         Scanner scanner = new Scanner(System.in);
-       //№2.Вызов SumLastNums.
+        //1.2.Вызов SumLastNums.
         System.out.println("№2.Сумма знаков.");
+        int digit = 0;
         System.out.print("Введите число, состоящее из не менее 2х знаков: ");
-        int Digit = scanner.nextInt();
-        System.out.println( "Сумма 2х последних цифр числа = " + methods.sumLastNums(Digit));
+        while (true) {
+            if (scanner.hasNextInt()) {
+                digit = scanner.nextInt();
+                if (digit >= 10) {
+                    System.out.println("Сумма двух последних цифр равна: " + sumLastNums(digit));
+                    break;
+                } else {
+                    System.out.println("Друг, ты ошибся! Введи положительное число больше или равное 10: ");
+                }
+            }
+            else {
+                System.out.println("Ошибка ввода! Введи положительное ЧИСЛО больше или равное 10: ");
+                scanner.next();
+            }
+        }
 
-        //№4.Вызов isPositive.
+        //1.4.Вызов isPositive.
         System.out.println("№4. Есть ли позитив");
         System.out.print("Введите число: ");
-        int  chislo = scanner.nextInt();
-        System.out.println( "Результат: " + methods.isPositive(chislo));
+        int  chislo = 0;
+        while (true) {
+            if (scanner.hasNextInt()) {
+                chislo = scanner.nextInt();
+                System.out.println( "Результат: " + isPositive(chislo));
+                break;
+            }else{
+                System.out.println("Ошибка ввода!Введи число: ");
+                scanner.next();
+            }
+        }
 
-        //№6. Вызов isUpperCase.
-        System.out.println("№6.Большая буква.");
-        System.out.println("Введите символ от A до Z: ");
-        char symbol = scanner.next().charAt(0);
-        System.out.println( "Результат: " + methods.isUpperCase(symbol));
+        //1.6. Вызов isUpperCase.
+        System.out.println("№6. Большая буква.");
+        System.out.print("Введите символ от A до Z: ");
 
-        //№8. Вызов isDivisor.
-        System.out.println("№8.Делитель.");
-        System.out.println("Введите число a: ");
-        int a = scanner.nextInt();
-        System.out.println("Введите число b: ");
-        int b = scanner.nextInt();
-        System.out.println( "Результат: " + methods.isDivisor(a,b));
+        while (true) {
+            if (scanner.hasNext()) {
+                String input = scanner.next();
+                if (input.length() == 1) {
+                    char symbol = input.charAt(0);
+                    // является ли символ заглавной буквой
+                    if (isUpperCase(symbol)) {
+                        System.out.println("Результат: " + true);
+                        break;
+                    } else {
+                        System.out.println("Ошибка: введенный символ не является заглавной буквой из диапозона A-Z.");
+                    }
+                } else {
+                    System.out.println("Ошибка: введите только одну букву из диапазона A-Z: ");
+                }
+            } else {
+                System.out.println("Ошибка ввода! Пожалуйста, введите корректный символ.");
+                scanner.next();
+            }
+        }
 
-        //№10. Вызов lastNumSum.
+        //1.8. Вызов isDivisor.
+        System.out.println("№8. Делитель.");
+        int a = 0;
+        while (true) {
+            System.out.print("Введите число a: ");
+            if (scanner.hasNextInt()) {
+                a = scanner.nextInt();
+                break;
+            } else {
+                System.out.println("Ошибка ввода! Введите число a: ");
+                scanner.next();
+            }
+        }
+
+        int b = 0;
+        while (true) {
+            System.out.print("Введите число b: ");
+            if (scanner.hasNextInt()) {
+                b = scanner.nextInt();
+                break;
+            } else {
+                System.out.println("Ошибка ввода! Введите число b: ");
+                scanner.next();
+            }
+        }
+        System.out.println("Результат: " + isDivisor(a, b));
+
+        //1.10. Вызов lastNumSum.
         System.out.println("№10.Многократный вызов.");
         int resSum = 0;
         System.out.println("Введите 5 чисел");
-        for (int i = 0; i < 5; i++){
-            System.out.println("Введите число " + (i+1) + ": ");
-            int input = scanner.nextInt();
-            resSum = methods.lastNumSum(resSum, input);
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Введите число " + (i + 1) + ": ");
+            while (true) {
+                if (scanner.hasNextInt()) {
+                    int input = scanner.nextInt();
+                    resSum = lastNumSum(resSum, input);
+                    break; // Выход из цикла при корректном вводе
+                } else {
+                    System.out.println("Ошибка ввода! Введите корректное целое число.");
+                    scanner.next(); // Очищаем некорректный ввод
+                }
+            }
         }
-        System.out.println("Итоговый результат: "+ resSum);
+        System.out.println("Итоговый результат: " + resSum);
 
         //Задание2.Условия.
         System.out.println("Задание 2.Условия.");
-        Сonditions conditions = new Сonditions();
 
-        //№2. Безопасное деление.
+        //2.2. Безопасное деление.
         System.out.println("№2.Безопасное деление.");
-        System.out.println("Введите число x: ");
-        int x = scanner.nextInt();
-        System.out.println("Введите число y: ");
-        int y = scanner.nextInt();
-        double result = Сonditions.safeDiv(x,y);
+        int x = 0;
+        while (true) {
+            System.out.print("Введите число x: ");
+            if (scanner.hasNextInt()) {
+                x = scanner.nextInt();
+                break;
+            } else {
+                System.out.println("Ошибка ввода! Введите число x: ");
+                scanner.next();
+            }
+        }
+
+        int y = 0;
+        while (true) {
+            System.out.print("Введите число y: ");
+            if (scanner.hasNextInt()) {
+                y = scanner.nextInt();
+                break;
+            } else {
+                System.out.println("Ошибка ввода! Введите число y: ");
+                scanner.next();
+            }
+        }
+        double result = safeDiv(x,y);
         System.out.println("Результат деления: " + result);
 
-        //№4. Строка сравнения.
+        //2.4. Строка сравнения.
         System.out.println("№4.Строка сравнения.");
-        System.out.println("Введите число x: ");
-        int X = scanner.nextInt();
-        System.out.println("Введите число y: ");
-        int Y = scanner.nextInt();
-        String rez = conditions.makeDecision(X,Y);
-        System.out.println("Результат сравненмия: " + X + rez + Y);
+        int x1 = 0;
+        while (true) {
+            System.out.print("Введите число x: ");
+            if (scanner.hasNextInt()) {
+                x1 = scanner.nextInt();
+                break;
+            } else {
+                System.out.println("Ошибка ввода! Введите число x: ");
+                scanner.next();
+            }
+        }
 
-        //№6.Тройная сумма.
+        int y1 = 0;
+        while (true) {
+            System.out.print("Введите число y: ");
+            if (scanner.hasNextInt()) {
+                y1 = scanner.nextInt();
+                break;
+            } else {
+                System.out.println("Ошибка ввода! Введите число y: ");
+                scanner.next();
+            }
+        }
+        String rez = makeDecision(x1,y1);
+        System.out.println("Результат сравненмия: " + x1 + rez + y1);
+
+        //2.6.Тройная сумма.
         System.out.println("№6.Тройная сумма.");
-        System.out.println("Введите число x: ");
-        int x1 = scanner.nextInt();
-        System.out.println("Введите число y: ");
-        int y1 = scanner.nextInt();
-        System.out.println("Введите число z: ");
-        int z1 = scanner.nextInt();
-        boolean rezult = conditions.sum3(x1, y1,z1);
-        System.out.println("Результат: " + rezult);
+        int x2 = 0;
+        while (true) {
+            System.out.print("Введите число x: ");
+            if (scanner.hasNextInt()) {
+                x2 = scanner.nextInt();
+                break;
+            } else {
+                System.out.println("Ошибка ввода! Введите число x: ");
+                scanner.next();
+            }
+        }
 
+        int y2 = 0;
+        while (true) {
+            System.out.print("Введите число y: ");
+            if (scanner.hasNextInt()) {
+                y2 = scanner.nextInt();
+                break;
+            } else {
+                System.out.println("Ошибка ввода! Введите число y: ");
+                scanner.next();
+            }
+        }
 
-
-        //№8. Возраст.
-        System.out.println("№8.Возраст.");
-        System.out.println("Введите число x: ");
-        int x2 = scanner.nextInt();
-        String rezult1 = conditions.age(x2);
+        int z2 = 0;
+        while (true) {
+            System.out.print("Введите число z: ");
+            if (scanner.hasNextInt()) {
+                z2 = scanner.nextInt();
+                break;
+            } else {
+                System.out.println("Ошибка ввода! Введите число z: ");
+                scanner.next();
+            }
+        }
+        boolean rezult1 = sum3(x2, y2,z2);
         System.out.println("Результат: " + rezult1);
 
-        //№10. Вывод дней недели.
-        Scanner scann = new Scanner(System.in);
+        //2.8. Возраст.
+        System.out.println("№8.Возраст.");
+        int x3 = 0;
+        while (true) {
+            System.out.print("Введите число x: ");
+            if (scanner.hasNextInt()) {
+                x3 = scanner.nextInt();
+                if (x3 > 0){
+                    String rezult3 = age(x3);
+                    System.out.println("Результат: " + rezult3);
+                    break;
+                }else{
+                    System.out.println("Ты ошибся! Введи число, больше 0: ");
+                }
+            } else {
+                System.out.println("Ошибка ввода! Введите число x: ");
+                scanner.next();
+            }
+        }
+
+        scanner.nextLine();
+        //2.10. Вывод дней недели.
         System.out.println("№10.Вывод дней недели.");
         System.out.println("Введите день недели: ");
-        String days = scann.nextLine();
+        String days = scanner.nextLine();
         System.out.println("Результат: ");
-        Сonditions.printDays(days);
+        printDays(days);
 
         //Задание3.Циклы.
         System.out.println("Задание3.Циклы.");
-        Cycles cycles = new Cycles();
 
-       //№2.Числа наоборот.
+       //3.2.Числа наоборот.
         System.out.println("№2.Числа наоборот.");
-        System.out.println("Введите число x: ");
-        int x3 = scanner.nextInt();
-        System.out.println("x = " + x3 + "\n Результат: ");
-        String x4 = cycles.reverseListNums(x3);
-        System.out.println(x4);
+        int x4 = 0;
+        while(true){
+            System.out.println("Введите число x: ");
+            if(scanner.hasNextInt()){
+                x4 = scanner.nextInt();
+                System.out.println("x = " + x4 + "\n Результат: ");
+                String x5 = reverseListNums(x4);
+                System.out.println(x5);
+                break;
+            }else{
+                System.out.println("Ошибка ввода!Введите число: ");
+                scanner.next();
+            }
+        }
 
         //№4.Cтепень числa.
         System.out.println("№4.Степень числа.");
-        System.out.println("Введите число x: ");
-        int x5 = scanner.nextInt();
-        System.out.println("Введите число y: ");
-        int y5 = scanner.nextInt();
-        int res5 = cycles.pow(x5,y5);
-        System.out.println("Результат: " + res5);
+        int x6 = 0;
+        while (true) {
+            System.out.print("Введите число x: ");
+            if (scanner.hasNextInt()) {
+                x6 = scanner.nextInt();
+                break;
+            } else {
+                System.out.println("Ошибка ввода! Введите число x: ");
+                scanner.next();
+            }
+        }
+
+        int y6 = 0;
+        while (true) {
+            System.out.print("Введите число y: ");
+            if (scanner.hasNextInt()) {
+                y6 = scanner.nextInt();
+                break;
+            } else {
+                System.out.println("Ошибка ввода! Введите число y: ");
+                scanner.next();
+            }
+        }
+        int res6 = pow(x6,y6);
+        System.out.println("Результат: " + res6);
 
         //№6.Одинакововость.
         System.out.println("№6.Одинакововсть.");
-        System.out.println("Введите число x: ");
-        int x6 = scanner.nextInt();
-        boolean res6 = cycles.equalNum(x6);
-        System.out.println("Результат: " + res6);
+        int x7 = 0;
+        while (true) {
+            System.out.print("Введите число x: ");
+            if (scanner.hasNextInt()) {
+                x7 = scanner.nextInt();
+                break;
+            } else {
+                System.out.println("Ошибка ввода! Введите число x: ");
+                scanner.next();
+            }
+        }
+        boolean res7 = equalNum(x7);
+        System.out.println("Результат: " + res7);
 
         //№8.Левый треугольник.
         System.out.println("№8.Левый треугольник.");
-        System.out.println("Введите число x: ");
-        int x7 = scanner.nextInt();
-        cycles.leftTriangle(x7);
+        int x8 = 0;
+        while (true) {
+            System.out.print("Введите число x: ");
+            if (scanner.hasNextInt()) {
+                x8 = scanner.nextInt();
+                if(x8 > 0){
+                    break;
+                }else{
+                    System.out.println("Ошибка ввода!Число должно быть больше 0: ");
+                }
+            } else {
+                System.out.println("Ошибка ввода! Введите число x: ");
+                scanner.next();
+            }
+        }
+        leftTriangle(x8);
 
         //№10.Угадайка.
         System.out.println("№10.Угадайка.");
-       Cycles.guessGame();
+        guessGame();
 
        //Задание4.Массивы.
-        System.out.println("Задание 4.Массивы.");
-        Array array = new Array();
-        //№2.Поиск последнего значения.
-        System.out.println("№2.Поиск последнего значения.");
-        System.out.println("Введите 5 элементов для массива: ");
-        int[] arr = new int[5];
-        for(int i = 0; i < arr.length; i++){
-            System.out.println("Введите число: ");
-            int value = scanner.nextInt();
-            arr[i] = value;
+        System.out.println("Задание4.Массивы.");
+        System.out.println("№2. Поиск последнего значения.");
+        System.out.print("Введите количество элементов для массива: ");
+        int size = 0;
+        while (true) {
+            if (scanner.hasNextInt()) {
+                size = scanner.nextInt();
+                if (size > 0) {
+                    break;
+                } else {
+                    System.out.println("Ошибка ввода! Размер массива должен быть больше 0.");
+                }
+            } else {
+                System.out.println("Ошибка ввода! Введите целое число.");
+                scanner.next();
+            }
         }
 
-        System.out.println("Введите число x: ");
-        int x8 = scanner.nextInt();
-        int res8 = array.findLast(arr, x8);
-        System.out.println("Результат: " + res8);
+        int[] arr = new int[size];
+
+        for (int i = 0; i < arr.length; i++) {
+            while (true) {
+                System.out.print("Введите число для элемента " + (i + 1) + ": ");
+                if (scanner.hasNextInt()) {
+                    arr[i] = scanner.nextInt();
+                    break;
+                } else {
+                    System.out.println("Ошибка ввода! Введите целое число.");
+                    scanner.next();
+                }
+            }
+        }
+        System.out.print("Введите число x: ");
+        while (true) {
+            if (scanner.hasNextInt()) {
+                int x9 = scanner.nextInt();
+                int res9 = findLast(arr, x9);
+                System.out.println("Результат: " + res9);
+                break;
+            } else {
+                System.out.println("Ошибка ввода! Введите целое число.");
+                scanner.next();
+            }
+        }
 
         //№4.Добавление в массив.
         System.out.println("№4.Добавление в массив.");
-        System.out.println("Введите 5 элементов для массива: ");
-        int[] arr1 = new int[5];
-        for(int i = 0; i < arr1.length; i++){
-            System.out.println("Введите число: ");
-            int value1 = scanner.nextInt();
-            arr1[i] = value1;
+        System.out.print("Введите количество элементов для массива: ");
+        int size1 = 0;
+        while (true) {
+            if (scanner.hasNextInt()) {
+                size1 = scanner.nextInt();
+                if (size1 > 0) {
+                    break;
+                } else {
+                    System.out.println("Ошибка ввода! Размер массива должен быть больше 0.");
+                }
+            } else {
+                System.out.println("Ошибка ввода! Введите целое число.");
+                scanner.next();
+            }
         }
-        System.out.println("Введите число x: ");
-        int x9 = scanner.nextInt();
-        System.out.println("Введите позицию pos: ");
-        int pos = scanner.nextInt();
-        int[] res9 = array.add(arr1, x9, pos);
-        System.out.println("Результат: " + Arrays.toString(res9));
+
+        int[] arr1 = new int[size1];
+
+        for (int i = 0; i < arr1.length; i++) {
+            while (true) {
+                System.out.print("Введите число для элемента " + (i + 1) + ": ");
+                if (scanner.hasNextInt()) {
+                    arr1[i] = scanner.nextInt();
+                    break;
+                } else {
+                    System.out.println("Ошибка ввода! Введите целое число.");
+                    scanner.next();
+                }
+            }
+        }
+        System.out.print("Введите число x: ");
+        int x11 =0;
+        while (true) {
+            if (scanner.hasNextInt()) {
+                x11 = scanner.nextInt();
+                break;
+            } else {
+                System.out.println("Ошибка ввода! Введите целое число.");
+                scanner.next();
+            }
+        }
+        System.out.print("Введите позицию pos: ");
+        int pos = -1;
+        while (true) {
+            if (scanner.hasNextInt()) {
+                pos = scanner.nextInt();
+                if (pos >= 0 && pos <= arr1.length) {
+                    break;
+                } else {
+                    System.out.println("Ошибка! Позиция должна быть от 0 до " + arr1.length);
+                }
+            } else {
+                System.out.println("Ошибка ввода! Введите целое число.");
+                scanner.next();
+            }
+        }
+        int[] res11 = add(arr1, x11, pos);
+        System.out.println("Результат: " + Arrays.toString(res11));
 
         //№6.Реверс.
         System.out.println("№6.Реверс.");
-        System.out.println("Введите 5 элементов для массива: ");
-        int[] arr2 = new int[5];
-        for(int i = 0; i < arr2.length; i++){
-            System.out.println("Введите число: ");
-            int value2 = scanner.nextInt();
-            arr2[i] = value2;
+        System.out.print("Введите количество элементов для массива: ");
+        int size2 = 0;
+        while (true) {
+            if (scanner.hasNextInt()) {
+                size2 = scanner.nextInt();
+                if (size2 > 0) {
+                    break;
+                } else {
+                    System.out.println("Ошибка ввода! Размер массива должен быть больше 0.");
+                }
+            } else {
+                System.out.println("Ошибка ввода! Введите целое число.");
+                scanner.next();
+            }
         }
-        Array.reverse(arr2);
+
+        int[] arr2 = new int[size2];
+
+        for (int i = 0; i < arr2.length; i++) {
+            while (true) {
+                System.out.print("Введите число для элемента " + (i + 1) + ": ");
+                if (scanner.hasNextInt()) {
+                    arr2[i] = scanner.nextInt();
+                    break;
+                } else {
+                    System.out.println("Ошибка ввода! Введите целое число.");
+                    scanner.next();
+                }
+            }
+        }
+        reverse(arr2);
         System.out.println("Массив после реверса: ");
         for (int num : arr2) {
             System.out.print(num + " ");
         }
 
-        //№8.Объединение.
+       //№8.Объединение.
         System.out.println("\n№8.Объединение.");
-        System.out.println("Введите 3 элемента для 1 массива: ");
-        int[] arr3 = new int[3];
-        for(int i = 0; i < arr3.length; i++){
-            System.out.println("Введите число: ");
-            int value3 = scanner.nextInt();
-            arr3[i] = value3;
+        System.out.print("Введите количество элементов для 1 массива: ");
+        int size3 = 0;
+        while (true) {
+            if (scanner.hasNextInt()) {
+                size3 = scanner.nextInt();
+                if (size3 > 0) {
+                    break;
+                } else {
+                    System.out.println("Ошибка ввода! Размер массива должен быть больше 0.");
+                }
+            } else {
+                System.out.println("Ошибка ввода! Введите целое число.");
+                scanner.next();
+            }
         }
-        System.out.println("Введите 3 элемента для 2 массива: ");
-        int[] arr4 = new int[3];
-        for(int i = 0; i < arr4.length; i++){
-            System.out.println("Введите число: ");
-            int value4 = scanner.nextInt();
-            arr4[i] = value4;
+
+        int[] arr3 = new int[size3];
+
+        for (int i = 0; i < arr3.length; i++) {
+            while (true) {
+                System.out.print("Введите число для элемента " + (i + 1) + ": ");
+                if (scanner.hasNextInt()) {
+                    arr3[i] = scanner.nextInt();
+                    break;
+                } else {
+                    System.out.println("Ошибка ввода! Введите целое число.");
+                    scanner.next();
+                }
+            }
         }
-        //Array array = new Array();
-        int[] result8 = array.contact(arr3, arr4);
-        System.out.println("Результат: " + Arrays.toString(result8));
+        System.out.print("Введите количество элементов для 2 массива: ");
+        int size4 = 0;
+        while (true) {
+            if (scanner.hasNextInt()) {
+                size4 = scanner.nextInt();
+                if (size4 > 0) {
+                    break;
+                } else {
+                    System.out.println("Ошибка ввода! Размер массива должен быть больше 0.");
+                }
+            } else {
+                System.out.println("Ошибка ввода! Введите целое число.");
+                scanner.next();
+            }
+        }
+
+        int[] arr4 = new int[size4];
+
+        for (int i = 0; i < arr4.length; i++) {
+            while (true) {
+                System.out.print("Введите число для элемента " + (i + 1) + ": ");
+                if (scanner.hasNextInt()) {
+                    arr4[i] = scanner.nextInt();
+                    break;
+                } else {
+                    System.out.println("Ошибка ввода! Введите целое число.");
+                    scanner.next();
+                }
+            }
+        }
+        int[] result12 = concat(arr3, arr4);
+        System.out.println("Результат: " + Arrays.toString(result12));
 
         //№10.Удалить негатив.
-        System.out.println("№10.Удалить негатив.");
-        System.out.println("Введите 3 элемента для массива: ");
-        int[] arr10 = new int[3];
-        for(int i = 0; i < arr10.length; i++){
-            System.out.println("Введите число: ");
-            int value10 = scanner.nextInt();
-            arr10[i] = value10;
+        System.out.print("Введите количество элементов для массива: ");
+        int size5 = 0;
+        while (true) {
+            if (scanner.hasNextInt()) {
+                size5 = scanner.nextInt();
+                if (size5 > 0) {
+                    break;
+                } else {
+                    System.out.println("Ошибка ввода! Размер массива должен быть больше 0.");
+                }
+            } else {
+                System.out.println("Ошибка ввода! Введите целое число.");
+                scanner.next();
+            }
         }
-        //Array array = new Array();
-        int[] result10 = array.deleteNegative(arr10);
+
+        int[] arr5 = new int[size5];
+
+        for (int i = 0; i < arr5.length; i++) {
+            while (true) {
+                System.out.print("Введите число для элемента " + (i + 1) + ": ");
+                if (scanner.hasNextInt()) {
+                    arr5[i] = scanner.nextInt();
+                    break;
+                } else {
+                    System.out.println("Ошибка ввода! Введите целое число.");
+                    scanner.next();
+                }
+            }
+        }
+        int[] result10 = deleteNegative(arr5);
         System.out.println("Результат: " + Arrays.toString(result10));
+        scanner.close();
     }
 }
