@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Main {
 
     //Задание1.2.Методы.
-    public static int sumLastNums(int x) { //возвращает сумму 2х последних цифр числа
+    public int sumLastNums(int x) { //возвращает сумму 2х последних цифр числа
         int lastD = x % 10;
         x /= 10;
         int secLastD = x % 10;
@@ -14,27 +14,27 @@ public class Main {
     }
 
     //Задание1.4.Методы.
-    public static boolean isPositive(int x) {
+    public boolean isPositive(int x) {
         return x > 0;
     }
 
     //Задание1.6.Методы.
-    public static boolean isUpperCase(char x){
+    public boolean isUpperCase(char x){
        return x >= 'A' && x <='Z';
     }
 
     //Задание1.8.Методы.
-    public static boolean isDivisor(int a, int b){
+    public boolean isDivisor(int a, int b){
         return (a % b == 0) || (b % a == 0);
     }
 
     //Задание1.10.Методы.
-    public static int lastNumSum(int a, int b){
+    public int lastNumSum(int a, int b){
         return (Math.abs(a) % 10) + (Math.abs(b) % 10);
     }
 
     //Задание2.2.Условия.
-    public static double safeDiv(int x, int y) {
+    public double safeDiv(int x, int y) {
         if (y == 0) {
             return 0;
         }
@@ -42,7 +42,7 @@ public class Main {
     }
 
     //Задание2.4.Условия.
-    public static String makeDecision(int x, int y) {
+    public String makeDecision(int x, int y) {
         if (x < y) {
             return "<";
         } else if (x > y) {
@@ -53,7 +53,7 @@ public class Main {
     }
 
     //Задание2.6.Условия.
-    public static boolean sum3(int x, int y, int z) {
+    public boolean sum3(int x, int y, int z) {
         if ((x + y == z) || (x + z == y) || (y + z == x)) {
             return true;
         } else {
@@ -62,7 +62,7 @@ public class Main {
     }
 
     //Задание2.8.Условия.
-    public static String age(int x) {
+    public String age(int x) {
         if (x % 10 == 1 && x % 100 != 11) {
             return x + " год";
         } else if ((x % 10 == 2 || x % 10 == 3 || x % 10 == 4) && (x % 100 < 12 || x % 100 > 14)) {
@@ -73,7 +73,7 @@ public class Main {
     }
 
     //Задание2.10.Условия.
-    public static void printDays(String x) {
+    public void printDays(String x) {
         switch (x.toLowerCase()) {
             case "понедельник":
                 System.out.println("понедельник");
@@ -123,7 +123,7 @@ public class Main {
     }
 
     //Задание3.2.Циклы.
-    public static String reverseListNums(int x){
+    public String reverseListNums(int x){
         String result = "";
         if (x > 0){
             for (int i = x; i >= 0; i--){
@@ -145,7 +145,7 @@ public class Main {
     }
 
     //Задание3.4.Циклы.
-    public static int pow(int x, int y){
+    public int pow(int x, int y){
         int result = 1;
         for ( int i = 0; i < y; i++ ){
             result *= x;
@@ -154,7 +154,7 @@ public class Main {
     }
 
     //Задание3.6.Циклы.
-    public static boolean equalNum(int x) {
+    public boolean equalNum(int x) {
         x = Math.abs(x);
         int oneDigit = x % 10;
         while (x > 0) {
@@ -166,7 +166,7 @@ public class Main {
     }
 
     //Задание3.8.Циклы.
-    public  static void leftTriangle(int x){
+    public void leftTriangle(int x){
         for (int i = 1; i <= x; i++){
             for (int j = 1; j <= i; j++){
                 System.out.print("*");
@@ -176,7 +176,7 @@ public class Main {
     }
 
     //Задание3.10.Циклы.
-    public static void guessGame() {
+    public void guessGame() {
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
         int numberToGuess = random.nextInt(10); // Генерация
@@ -210,7 +210,7 @@ public class Main {
     }
 
     //Задание4.2.Массивы.
-    public static int findLast (int[] arr, int x){
+    public int findLast (int[] arr, int x){
         for(int i = arr.length -1; i>=0; i--){
             if (arr[i]==x)
                 return i;
@@ -219,7 +219,7 @@ public class Main {
     }
 
     //Задание4.4.Массивы.
-    public static int[]add (int[] arr, int x, int pos){
+    public int[]add (int[] arr, int x, int pos){
         if (pos < 0 || pos > arr.length)
             System.out.println("Недопустимая позиция:" + pos);
         int[] newArr = new int[arr.length+1];
@@ -234,7 +234,7 @@ public class Main {
     }
 
     //Задание4.6.Массивы.
-    public static void reverse(int[] arr){
+    public void reverse(int[] arr){
         int left = 0; // Указатель на начало массива
         int right = arr.length - 1; // Указатель на конец массива
 
@@ -249,7 +249,7 @@ public class Main {
     }
 
     //Задание4.8.Массивы.
-    public static int[] concat(int[]arr1, int[] arr2){
+    public int[] concat(int[]arr1, int[] arr2){
         int[] newArr = new int[arr1.length + arr2.length];
 
         // Копируем элементы 1 массива
@@ -264,7 +264,7 @@ public class Main {
     }
 
     //Задание4.10.Массивы.
-    public static int[] deleteNegative (int[] arr){
+    public int[] deleteNegative (int[] arr){
         int count = 0;
         for (int num : arr) {
             if (num >= 0) {
@@ -291,6 +291,7 @@ public class Main {
         System.out.println("Задание 1. Методы.");
         Scanner scanner = new Scanner(System.in);
         //1.2.Вызов SumLastNums.
+        Main mainInstance = new Main();
         System.out.println("№2.Сумма знаков.");
         int digit = 0;
         System.out.print("Введите число, состоящее из не менее 2х знаков: ");
@@ -298,7 +299,7 @@ public class Main {
             if (scanner.hasNextInt()) {
                 digit = scanner.nextInt();
                 if (digit >= 10) {
-                    System.out.println("Сумма двух последних цифр равна: " + sumLastNums(digit));
+                    System.out.println("Сумма двух последних цифр равна: " + mainInstance.sumLastNums(digit));
                     break;
                 } else {
                     System.out.println("Друг, ты ошибся! Введи положительное число больше или равное 10: ");
@@ -312,12 +313,13 @@ public class Main {
 
         //1.4.Вызов isPositive.
         System.out.println("№4. Есть ли позитив");
+        Main mainInstance1 = new Main();
         System.out.print("Введите число: ");
         int  chislo = 0;
         while (true) {
             if (scanner.hasNextInt()) {
                 chislo = scanner.nextInt();
-                System.out.println( "Результат: " + isPositive(chislo));
+                System.out.println( "Результат: " + mainInstance1.isPositive(chislo));
                 break;
             }else{
                 System.out.println("Ошибка ввода!Введи число: ");
@@ -327,6 +329,7 @@ public class Main {
 
         //1.6. Вызов isUpperCase.
         System.out.println("№6. Большая буква.");
+        Main mainInstance2 = new Main();
         System.out.print("Введите символ от A до Z: ");
 
         while (true) {
@@ -335,7 +338,7 @@ public class Main {
                 if (input.length() == 1) {
                     char symbol = input.charAt(0);
                     // является ли символ заглавной буквой
-                    if (isUpperCase(symbol)) {
+                    if (mainInstance2.isUpperCase(symbol)) {
                         System.out.println("Результат: " + true);
                         break;
                     } else {
@@ -352,6 +355,7 @@ public class Main {
 
         //1.8. Вызов isDivisor.
         System.out.println("№8. Делитель.");
+        Main mainInstance3 = new Main();
         int a = 0;
         while (true) {
             System.out.print("Введите число a: ");
@@ -375,10 +379,11 @@ public class Main {
                 scanner.next();
             }
         }
-        System.out.println("Результат: " + isDivisor(a, b));
+        System.out.println("Результат: " + mainInstance3.isDivisor(a, b));
 
         //1.10. Вызов lastNumSum.
         System.out.println("№10.Многократный вызов.");
+        Main mainInstance4 = new Main();
         int resSum = 0;
         System.out.println("Введите 5 чисел");
         for (int i = 0; i < 5; i++) {
@@ -386,7 +391,7 @@ public class Main {
             while (true) {
                 if (scanner.hasNextInt()) {
                     int input = scanner.nextInt();
-                    resSum = lastNumSum(resSum, input);
+                    resSum = mainInstance4.lastNumSum(resSum, input);
                     break; // Выход из цикла при корректном вводе
                 } else {
                     System.out.println("Ошибка ввода! Введите корректное целое число.");
@@ -401,6 +406,7 @@ public class Main {
 
         //2.2. Безопасное деление.
         System.out.println("№2.Безопасное деление.");
+        Main mainInstance5 = new Main();
         int x = 0;
         while (true) {
             System.out.print("Введите число x: ");
@@ -424,11 +430,12 @@ public class Main {
                 scanner.next();
             }
         }
-        double result = safeDiv(x,y);
+        double result = mainInstance5.safeDiv(x,y);
         System.out.println("Результат деления: " + result);
 
         //2.4. Строка сравнения.
         System.out.println("№4.Строка сравнения.");
+        Main mainInstance6 = new Main();
         int x1 = 0;
         while (true) {
             System.out.print("Введите число x: ");
@@ -452,11 +459,12 @@ public class Main {
                 scanner.next();
             }
         }
-        String rez = makeDecision(x1,y1);
+        String rez = mainInstance6.makeDecision(x1,y1);
         System.out.println("Результат сравненмия: " + x1 + rez + y1);
 
         //2.6.Тройная сумма.
         System.out.println("№6.Тройная сумма.");
+        Main mainInstance7 = new Main();
         int x2 = 0;
         while (true) {
             System.out.print("Введите число x: ");
@@ -492,18 +500,19 @@ public class Main {
                 scanner.next();
             }
         }
-        boolean rezult1 = sum3(x2, y2,z2);
+        boolean rezult1 = mainInstance7.sum3(x2, y2,z2);
         System.out.println("Результат: " + rezult1);
 
         //2.8. Возраст.
         System.out.println("№8.Возраст.");
+        Main mainInstance8 = new Main();
         int x3 = 0;
         while (true) {
             System.out.print("Введите число x: ");
             if (scanner.hasNextInt()) {
                 x3 = scanner.nextInt();
                 if (x3 > 0){
-                    String rezult3 = age(x3);
+                    String rezult3 = mainInstance8.age(x3);
                     System.out.println("Результат: " + rezult3);
                     break;
                 }else{
@@ -518,23 +527,25 @@ public class Main {
         scanner.nextLine();
         //2.10. Вывод дней недели.
         System.out.println("№10.Вывод дней недели.");
+        Main mainInstance9 = new Main();
         System.out.println("Введите день недели: ");
         String days = scanner.nextLine();
         System.out.println("Результат: ");
-        printDays(days);
+        mainInstance9.printDays(days);
 
         //Задание3.Циклы.
         System.out.println("Задание3.Циклы.");
 
        //3.2.Числа наоборот.
         System.out.println("№2.Числа наоборот.");
+        Main mainInstance10 = new Main();
         int x4 = 0;
         while(true){
             System.out.println("Введите число x: ");
             if(scanner.hasNextInt()){
                 x4 = scanner.nextInt();
                 System.out.println("x = " + x4 + "\n Результат: ");
-                String x5 = reverseListNums(x4);
+                String x5 = mainInstance10.reverseListNums(x4);
                 System.out.println(x5);
                 break;
             }else{
@@ -545,6 +556,7 @@ public class Main {
 
         //№4.Cтепень числa.
         System.out.println("№4.Степень числа.");
+        Main mainInstance11 = new Main();
         int x6 = 0;
         while (true) {
             System.out.print("Введите число x: ");
@@ -568,11 +580,12 @@ public class Main {
                 scanner.next();
             }
         }
-        int res6 = pow(x6,y6);
+        int res6 = mainInstance11.pow(x6,y6);
         System.out.println("Результат: " + res6);
 
         //№6.Одинакововость.
         System.out.println("№6.Одинакововсть.");
+        Main mainInstance12 = new Main();
         int x7 = 0;
         while (true) {
             System.out.print("Введите число x: ");
@@ -584,11 +597,12 @@ public class Main {
                 scanner.next();
             }
         }
-        boolean res7 = equalNum(x7);
+        boolean res7 = mainInstance12.equalNum(x7);
         System.out.println("Результат: " + res7);
 
         //№8.Левый треугольник.
         System.out.println("№8.Левый треугольник.");
+        Main mainInstance13 = new Main();
         int x8 = 0;
         while (true) {
             System.out.print("Введите число x: ");
@@ -604,15 +618,18 @@ public class Main {
                 scanner.next();
             }
         }
-        leftTriangle(x8);
+        mainInstance13.leftTriangle(x8);
 
         //№10.Угадайка.
         System.out.println("№10.Угадайка.");
-        guessGame();
+        Main mainInstance14 = new Main();
+        mainInstance14.guessGame();
 
        //Задание4.Массивы.
         System.out.println("Задание4.Массивы.");
+        //№2.Поиск последнего значения.
         System.out.println("№2. Поиск последнего значения.");
+        Main mainInstance15 = new Main();
         System.out.print("Введите количество элементов для массива: ");
         int size = 0;
         while (true) {
@@ -647,7 +664,7 @@ public class Main {
         while (true) {
             if (scanner.hasNextInt()) {
                 int x9 = scanner.nextInt();
-                int res9 = findLast(arr, x9);
+                int res9 = mainInstance15.findLast(arr, x9);
                 System.out.println("Результат: " + res9);
                 break;
             } else {
@@ -658,6 +675,7 @@ public class Main {
 
         //№4.Добавление в массив.
         System.out.println("№4.Добавление в массив.");
+        Main mainInstance16 = new Main();
         System.out.print("Введите количество элементов для массива: ");
         int size1 = 0;
         while (true) {
@@ -714,11 +732,12 @@ public class Main {
                 scanner.next();
             }
         }
-        int[] res11 = add(arr1, x11, pos);
+        int[] res11 = mainInstance16.add(arr1, x11, pos);
         System.out.println("Результат: " + Arrays.toString(res11));
 
         //№6.Реверс.
         System.out.println("№6.Реверс.");
+        Main mainInstance17 = new Main();
         System.out.print("Введите количество элементов для массива: ");
         int size2 = 0;
         while (true) {
@@ -749,7 +768,7 @@ public class Main {
                 }
             }
         }
-        reverse(arr2);
+        mainInstance17.reverse(arr2);
         System.out.println("Массив после реверса: ");
         for (int num : arr2) {
             System.out.print(num + " ");
@@ -757,6 +776,7 @@ public class Main {
 
        //№8.Объединение.
         System.out.println("\n№8.Объединение.");
+        Main mainInstance18 = new Main();
         System.out.print("Введите количество элементов для 1 массива: ");
         int size3 = 0;
         while (true) {
@@ -817,11 +837,12 @@ public class Main {
                 }
             }
         }
-        int[] result12 = concat(arr3, arr4);
+        int[] result12 = mainInstance18.concat(arr3, arr4);
         System.out.println("Результат: " + Arrays.toString(result12));
 
         //№10.Удалить негатив.
         System.out.print("Введите количество элементов для массива: ");
+        Main mainInstance19 = new Main();
         int size5 = 0;
         while (true) {
             if (scanner.hasNextInt()) {
@@ -851,7 +872,7 @@ public class Main {
                 }
             }
         }
-        int[] result10 = deleteNegative(arr5);
+        int[] result10 = mainInstance19.deleteNegative(arr5);
         System.out.println("Результат: " + Arrays.toString(result10));
         scanner.close();
     }
